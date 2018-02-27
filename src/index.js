@@ -74,21 +74,22 @@ module.exports = function longestConsecutiveLength(array) {
     }
   }
 
-  var delta = array[1] - array[0];
-  var countMax = 2;
-  var countTest = 2;
+  var countMax = 1;
+  var countTest = 1;
 
-  for (var i = 2; i<array.length; i++) {
+  for (var i = 1; i<array.length; i++) {
     var testdelta = array[i] - array[i-1];
-    if (delta === testdelta) {
-    	countTest++;
-    }else {
-    	if(countTest>countMax) {
-    		countMax= countTest;
-    	}
-    	countTest = 2;
-    	delta = testdelta;
-    }
+    if(testdelta != 0) {
+	    if (testdelta === 1) {
+	    	countTest++;
+	    }else{
+	    	if(countTest>countMax) {
+	    		countMax= countTest;
+	    	}
+	    	countTest = 1;
+	    	
+	    }
+	}
   }
 
   return countMax;
